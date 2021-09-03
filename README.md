@@ -18,7 +18,18 @@ Jenkins ci for webpack.
 - deploy.sh
 
   执行完 `pack.sh` 后，执行该脚本把应用部署到 kubernetes
-  
+
+## FAQ
+
+### WARNING: IPv4 forwarding is disabled. Networking will not work
+
+使用以下脚本解决 docker 容器无法访问外网的问题
+
+``` bash
+echo "net.ipv4.ip_forward=1" >>/usr/lib/sysctl.d/00-system.conf
+systemctl restart network && systemctl restart docker
+```
+
 ## Project setup
 ```
 yarn install
